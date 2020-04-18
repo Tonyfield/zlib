@@ -352,7 +352,11 @@
 #    include <windows.h>
      /* No need for _export, use ZLIB.DEF instead. */
      /* For complete Windows compatibility, use WINAPI, not __stdcall. */
-#    define ZEXPORT WINAPI
+#    ifdef ZLIB_INTERNAL
+#	   define ZEXPORT WINAPIV
+#    else
+#	   define ZEXPORT WINAPI
+#    endif
 #    ifdef WIN32
 #      define ZEXPORTVA WINAPIV
 #    else
